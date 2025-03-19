@@ -1,0 +1,10 @@
+<resources>
+    <string name="name_lab1">Lab1</string>
+    <string name="name_lab2">Lab2</string>
+    <string name="text_first_name">Imie</string>
+    <string name="text_last_name">Nazwisko</string>
+    <string name="text_grades">Oceny</string>
+    <string name="placeholder_first_name">Wpisz Imie</string>
+    <string name="placeholder_last_name">Wpisz Nazwisko</string>
+    <string name="placeholder_grades">Wpisz Ocene (5-15)</string>
+</resources>

@@ -1,11 +1,13 @@
 package com.example.lab1;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -14,7 +16,10 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 public class Lab2Activity extends MainActivity {
-    Button przycisk;
+
+    Button przycisk, czyZdane;
+
+    TextView sredniaDisplay;
 
     EditText firstName, lastName, oceny;
 
@@ -37,12 +42,11 @@ public class Lab2Activity extends MainActivity {
         }
     }
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_lab1);
+        setContentView(R.layout.activity_lab2);
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
@@ -130,16 +134,16 @@ public class Lab2Activity extends MainActivity {
                         flags[2] = false;
                         Toast.makeText(getApplicationContext(), "Wartość musi być między 5 a 15", Toast.LENGTH_SHORT).show();
                     }
-                } catch (Exception e){
+                } catch (Exception e) {
                     oceny.setError("pole nie moze byc puste");
                 }
             }
         });
 
         firstName.setOnFocusChangeListener((v, hasFocus) -> {
-            if(!hasFocus){
+            if (!hasFocus) {
                 String text = firstName.getText().toString();
-                if(text.isEmpty()){
+                if (text.isEmpty()) {
                     firstName.setError("Wartość nie może być pusta");
                     Toast.makeText(getApplicationContext(), "Pole nie moze być puste", Toast.LENGTH_SHORT).show();
                 } else {
@@ -149,9 +153,9 @@ public class Lab2Activity extends MainActivity {
         });
 
         lastName.setOnFocusChangeListener((v, hasFocus) -> {
-            if(!hasFocus){
+            if (!hasFocus) {
                 String text = lastName.getText().toString();
-                if(text.isEmpty()){
+                if (text.isEmpty()) {
                     lastName.setError("Wartość nie może być pusta");
                     Toast.makeText(getApplicationContext(), "Pole nie moze być puste", Toast.LENGTH_SHORT).show();
                 } else {
@@ -159,5 +163,38 @@ public class Lab2Activity extends MainActivity {
                 }
             }
         });
+        przycisk.setOnClickListener((v) -> {
+            Intent intencja = new Intent(this, OcenyActivity.class);
+            Bundle paczka = new Bundle();
+            paczka.putInt("oceny", Integer.parseInt(oceny.getText().toString()));
+            intencja.putExtras(paczka);
+            startActivity(intencja);
+        });
+
+        czyZdane = findViewById(R.id.czyZdane);
+        sredniaDisplay = findViewById(R.id.sredniaDisplay);
+        Bundle paczka2 = getIntent().getExtras();
+        if (paczka2 != null) {
+            String buttonText = "";
+            double srednia = paczka2.getDouble("srednia");
+            String text = String.format("%.2f", srednia);
+            sredniaDisplay.setText(text);
+            sredniaDisplay.setVisibility(View.VISIBLE);
+            if(srednia >= 3.0){
+                buttonText = "Super :)";
+                czyZdane.setOnClickListener((v) -> {
+                    Toast.makeText(getApplicationContext(), "Gratulacje! Otrzymujesz zaliczenie!", Toast.LENGTH_SHORT).show();
+                    finishAffinity();
+                });
+            } else {
+                buttonText = "Tym razem mi nie poszło";
+                czyZdane.setOnClickListener((v) -> {
+                    Toast.makeText(getApplicationContext(), "Wysyłam podanie o zaliczenie warunkowe", Toast.LENGTH_SHORT).show();
+                    finishAffinity();
+                });
+            }
+            czyZdane.setText(buttonText);
+            czyZdane.setVisibility(View.VISIBLE);
+        }
     }
 }

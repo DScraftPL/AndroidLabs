@@ -19,13 +19,14 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
-        //setContentView(R.layout.activity_sub1);
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-        //startActivityForResult(intencja, 1);
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
     }
 
     @Override
@@ -38,15 +39,21 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item){
         if(item.getItemId() == R.id.lab1){
-            Intent intencja = new Intent(MainActivity.this, Lab2Activity.class);
-            startActivity(intencja);
-            return true;
-        }
-        if(item.getItemId() == R.id.lab2){
             Intent intencja = new Intent(MainActivity.this, Lab1Activity.class);
             startActivity(intencja);
             return true;
         }
+        if(item.getItemId() == R.id.lab2){
+            Intent intencja = new Intent(MainActivity.this, Lab2Activity.class);
+            startActivity(intencja);
+            return true;
+        }
         return false;
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
     }
 }

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+
+    <TextView
+        android:id="@+id/przedmiot"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:maxLines="2"
+        android:ellipsize="end"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/grupaOcen"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_weight="1"/>
+
+    <RadioGroup
+        android:id="@+id/grupaOcen"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toEndOf="@id/przedmiot"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+            <RadioButton
+                android:id="@+id/ocena2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/o2" />
+
+            <RadioButton
+                android:id="@+id/ocena3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/o3" />
+
+            <RadioButton
+                android:id="@+id/ocena35"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/o35" />
+
+            <RadioButton
+                android:id="@+id/ocena4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/o4" />
+
+            <RadioButton
+                android:id="@+id/ocena45"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/o45" />
+
+            <RadioButton
+                android:id="@+id/ocena5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/o5" />
+        </RadioGroup>
+</androidx.constraintlayout.widget.ConstraintLayout>

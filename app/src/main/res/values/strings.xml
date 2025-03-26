@@ -1,4 +1,5 @@
 <resources>
+    <string name="app_name">AndroidLab</string>
     <string name="name_lab1">Lab1</string>
     <string name="name_lab2">Lab2</string>
     <string name="text_first_name">Imie</string>
@@ -6,5 +7,30 @@
     <string name="text_grades">Oceny</string>
     <string name="placeholder_first_name">Wpisz Imie</string>
     <string name="placeholder_last_name">Wpisz Nazwisko</string>
-    <string name="placeholder_grades">Wpisz Ocene (5-15)</string>
+    <string name="placeholder_grades">Wpisz Ocene (5–15)</string>
+    <string name="o2">2</string>
+    <string name="o3">3</string>
+    <string name="o35">3.5</string>
+    <string name="o4">4</string>
+    <string name="o45">4.5</string>
+    <string name="o5">5</string>
+
+    <string-array name="przedmioty">
+        <item>Wstęp do Informatyki</item>
+        <item>Docker</item>
+        <item>Programowanie w C</item>
+        <item>Linux</item>
+        <item>Programowanie na Androida</item>
+        <item>Programowanie na iOS</item>
+        <item>Programowanie w C++</item>
+        <item>Programowanie w Java</item>
+        <item>Haskell</item>
+        <item>Prolog</item>
+        <item>Python</item>
+        <item>Swift</item>
+        <item>C Płotek</item>
+        <item>PE HA PE</item>
+        <item>Dżawaskrypt</item>
+        <item>BHP</item>
+    </string-array>
 </resources>
